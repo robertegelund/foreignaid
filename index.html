@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Foreign Aid - Norway to Africa</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="map"></div>
+    <div id="info-section">
+        <h1 class="info-section-title">Africa</h1>
+        <p class="info-section-aid"><span class="total-aid-received"><span class="total-aid">Total Aid Received</span> from 1962 to 2018:</span> <span class="total-aid-amount">142,624.0 MNOK</span></p>
+        <p class="aid-percentages"></p>
+        <div id="aid-graph"></div>
+    </div>
+    
+    <script src="./africa-map.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="./aid-time-series.js"></script>
+    <script src="./aid-pie.js"></script>
+    
+</body>
+</html>
