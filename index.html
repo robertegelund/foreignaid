@@ -11,12 +11,20 @@
 </head>
 <body>
     <div id="map"></div>
-    <div id="info-section">
+    <div id="info-section-container">
         <h1 class="info-section-title">Africa</h1>
-        <p class="info-section-aid"><span class="total-aid-received"><span class="total-aid">Aid Received</span> from 1962 to 2018:</span> <span class="total-aid-amount">142,624.0 MNOK</span></p>
-        <p class="aid-percentages"></p>
-        <div id="aid-graph-timeseries" style="height: 150px; padding-right: 25px"></div>
-        <div id="aid-graph-unspecified" style="height: 150px; padding-right: 25px"></div>
+        <div class="info-section">
+            <div class="info-section-aid">
+                <p class="total-aid-received"><span class="total-aid">Aid Received</span> from 1962 to 2018:</p>
+                <p class="total-aid-amount">142,624.0</p>
+            </div>
+            <div class="relative-section">
+                <p class="aid-percentages"></p>
+                <p class="aid-explanation"></p>
+            </div>
+        </div>
+        <div id="aid-graph-timeseries" style="height: 180px; padding-right: 25px"></div>
+        <div id="aid-graph-unspecified" style="height: 180px; padding-right: 25px"></div>
     </div>
     
     <script src="https://code.highcharts.com/highcharts.js"></script>

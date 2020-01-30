@@ -1,14 +1,15 @@
 const infoSectionTitle = document.querySelector(".info-section-title");
 const totalAidAmount = document.querySelector(".total-aid-amount");
 const aidPercentages = document.querySelector(".aid-percentages");
+const aidExplanation = document.querySelector(".aid-explanation")
 const aidGraphTimeseries = document.querySelector("#aid-graph-timeseries");
 const aidGraphUnspecified = document.querySelector("#aid-graph-unspecified");
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0ZWdlbHVuZCIsImEiOiJjazUzbHVlaHkwYTFoM2xwbmltNzgyazA0In0.Xc5srVX7uKCSLlVU1RdtCg';
 
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0ZWdlbHVuZCIsImEiOiJjazUzbHVlaHkwYTFoM2xwbmltNzgyazA0In0.Xc5srVX7uKCSLlVU1RdtCg';
 const kart = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/robertegelund/ck58bcdnm1y811dquwb262n1v',
+    container: "map",
+    style: "mapbox://styles/robertegelund/ck60z31s907hu1ina556o9t5f",
     center: [41.657048, -6.813934],
     zoom: 3.55,
     maxZoom: 3.8,
@@ -56,11 +57,12 @@ const chart = new Highcharts.Chart(options);
 
 let first = true;
 aidPercentages.innerHTML = (142624 * 100 / 600813.8).toFixed(2) + " %";
+aidExplanation.innerHTML = "of the world's total aid from Norway"
 
 const collectAndUseData = async () => {
     const response = await fetch("./data/africa.geojson");
     const json = await response.json();
-    const aidData = json.features.map( country => {
+    const aidData = await json.features.map( country => {
    
     kart.addLayer({
         id: country.properties.name,
@@ -74,54 +76,53 @@ const collectAndUseData = async () => {
         }
     });
 
-        kart.on("mouseover", country.properties.name, () => {
-            kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.5)");
-        });
+    kart.on("mouseover", country.properties.name, () => {
+        kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.5)");
+    });
 
-        kart.on("mouseleave", country.properties.name, () => {
-            kart.setPaintProperty(country.properties.name, "fill-color", "transparent")
-        });
-    
-        kart.on("click", country.properties.name, (e) => {
-            infoSectionTitle.innerHTML = country.properties.name;
+    kart.on("mouseleave", country.properties.name, () => {
+        kart.setPaintProperty(country.properties.name, "fill-color", "transparent")
+    });
 
-            const aidString = String(country.properties.aid);
-            const aidStringArray = [];
-            
-            if (aidString.length === 6) {
+    kart.on("click", country.properties.name, (e) => {
+        infoSectionTitle.innerHTML = country.properties.name;
+        const aidString = String(country.properties.aid);
+        const aidStringArray = [];
+        kart.setZoom(3.8);
+        
+        if (aidString.length === 6) {
                 for (let i=1; i <= aidString.length; i++) { 
                     aidStringArray.push(aidString[i]);
                     totalAidAmount.innerHTML = aidString[0] + "," + aidStringArray.join("") + " MNOK";
-            }} else if (aidString.length === 7) {
+        }} else if (aidString.length === 7) {
                 for (let i=2; i <= aidString.length; i++) {
                     aidStringArray.push(aidString[i]);
                     totalAidAmount.innerHTML = aidString[0] + aidString[1] + "," + aidStringArray.join("") + " MNOK";
-                }} else {
+            }} else {
                     totalAidAmount.innerHTML = aidString + " MNOK";
-                };
-            
-            aidPercentages.innerHTML = (country.properties.aid * 100 / 142624).toFixed(2) + " %";
-            kart.setZoom(3.8);
-
-            if(first) {
-                kart.flyTo({
-                    center: [e.lngLat.lng, e.lngLat.lat]
-                });
-                aidGraphTimeseries.style.display = "none";
-                aidGraphUnspecified.style.display = "block";
-                 first = false;
-            } else {
-                kart.easeTo({
-                    center: [e.lngLat.lng, e.lngLat.lat]
-                });
             };
+        
+        if(first) {
+            kart.flyTo({
+                center: [e.lngLat.lng, e.lngLat.lat]
+            });
+            aidGraphTimeseries.style.display = "none";
+            aidGraphUnspecified.style.display = "block";
+            first = false;
+        } else {
+            kart.easeTo({
+                center: [e.lngLat.lng, e.lngLat.lat]
+            });
+        };
 
-            chart.series[0].update({
-                data:   [{
-                            name: "Unallocated/Unspecified",
-                            y: country.properties.unspecified * 100 / country.properties.aid
-                        }]
-            }); 
-        });
-    })
-};
+        aidPercentages.innerHTML = (country.properties.aid * 100 / 142624).toFixed(2) + " %";
+        aidExplanation.innerHTML = "of Africa's total aid from Norway"
+        
+        chart.series[0].update({
+            data:   [{
+                        name: "Unallocated/Unspecified",
+                        y: country.properties.unspecified * 100 / country.properties.aid
+                    }]
+        }); 
+    });
+})};
