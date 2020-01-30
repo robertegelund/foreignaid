@@ -1,7 +1,7 @@
 const showAidTimeSeries = async () => {
     const response = await fetch("./data/aid-data.json");
     const json = await response.json();
-    const aidAndYear = json.aid;
+    const aidAndYear = await json.aid;
 
     const years = aidAndYear.map( 
         aidYear => aidYear.name); 
@@ -10,7 +10,6 @@ const options = {
     chart: {
         renderTo: "aid-graph",
         type: "line",
-        height: "200px",
         backgroundColor: "transparent",
     },
     title: false,
