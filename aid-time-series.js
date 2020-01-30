@@ -8,7 +8,7 @@ const showAidTimeSeries = async () => {
 
 const options = {
     chart: {
-        renderTo: "aid-graph",
+        renderTo: "aid-graph-timeseries",
         type: "line",
         backgroundColor: "transparent",
     },

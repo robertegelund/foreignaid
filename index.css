@@ -14,16 +14,16 @@ body {
     position: absolute;
     bottom: 50px;
     right: 50px;
-    width: 40%;
+    width: 30%;
     min-width: 550px;
     display: flex;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
 }
 
 .info-section-title {
-    font-size: 2rem;
+    font-size: 2.1rem;
     padding-left: 45px;
     margin-bottom: 0;
 }
@@ -43,21 +43,18 @@ body {
 }
 
 .total-aid-amount {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: greenyellow;
 }
 
 .aid-percentages {
-    font-size: 2.5rem;
+    font-size: 3rem;
     position: absolute;
     right: 35px;
     top: 45px;
 }
 
-
-/* @media (max-width: 1700px) {
-    .aid-percentages {
-        display: none
-    }
-} */
+#aid-graph-unspecified {
+    display: none;
+}
 
