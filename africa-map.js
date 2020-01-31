@@ -4,12 +4,14 @@ const aidPercentages = document.querySelector(".aid-percentages");
 const aidExplanation = document.querySelector(".aid-explanation")
 const aidGraphTimeseries = document.querySelector("#aid-graph-timeseries");
 const aidGraphUnspecified = document.querySelector("#aid-graph-unspecified");
+const aidStatus = document.querySelector(".aid-status");
+let aktiv = "Namibia";
 
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0ZWdlbHVuZCIsImEiOiJjazUzbHVlaHkwYTFoM2xwbmltNzgyazA0In0.Xc5srVX7uKCSLlVU1RdtCg';
 const kart = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/robertegelund/ck60z31s907hu1ina556o9t5f",
+    style: "mapbox://styles/robertegelund/ck60zv5y7086a1io3ahy6d9f2",
     center: [41.657048, -6.813934],
     zoom: 3.55,
     maxZoom: 3.8,
@@ -77,19 +79,25 @@ const collectAndUseData = async () => {
     });
 
     kart.on("mouseover", country.properties.name, () => {
-        kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.5)");
+        if(country.properties.name != aktiv) 
+            kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.5)");
     });
 
     kart.on("mouseleave", country.properties.name, () => {
-        kart.setPaintProperty(country.properties.name, "fill-color", "transparent")
+        if(country.properties.name != aktiv)
+            kart.setPaintProperty(country.properties.name, "fill-color", "transparent")
     });
 
     kart.on("click", country.properties.name, (e) => {
+        kart.setPaintProperty(aktiv, "fill-color", "transparent");    
+        aktiv = country.properties.name;
+        kart.setPaintProperty(aktiv, "fill-color", "rgba(230,0,0,0.3)");
+        
         infoSectionTitle.innerHTML = country.properties.name;
+        
         const aidString = String(country.properties.aid);
         const aidStringArray = [];
         kart.setZoom(3.8);
-        
         if (aidString.length === 6) {
                 for (let i=1; i <= aidString.length; i++) { 
                     aidStringArray.push(aidString[i]);
@@ -101,6 +109,9 @@ const collectAndUseData = async () => {
             }} else {
                     totalAidAmount.innerHTML = aidString + " MNOK";
             };
+
+        aidPercentages.innerHTML = (country.properties.aid * 100 / 142624).toFixed(2) + " %";
+        aidExplanation.innerHTML = "of Africa's total aid from Norway";
         
         if(first) {
             kart.flyTo({
@@ -115,14 +126,20 @@ const collectAndUseData = async () => {
             });
         };
 
-        aidPercentages.innerHTML = (country.properties.aid * 100 / 142624).toFixed(2) + " %";
-        aidExplanation.innerHTML = "of Africa's total aid from Norway"
-        
         chart.series[0].update({
             data:   [{
                         name: "Unallocated/Unspecified",
                         y: country.properties.unspecified * 100 / country.properties.aid
                     }]
-        }); 
+            }) 
+
+        if(country.properties.unspecified === 0) {
+            aidStatus.style.display = "block";
+            aidStatus.innerHTML = `All ${country.properties.name}'s Norwegian aid are allocated`;
+        } else if (country.properties.unspecified === "NaN") {
+            aidStatus.style.display = "block";
+            aidStatus.innerHTML = `We are not sure whether any of ${country.properties.name}'s Norwegian aid is unalloc./unspec.`;
+        } else {aidStatus.style.display = "none"}
+
     });
 })};

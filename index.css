@@ -15,6 +15,21 @@ p {
     width: 100vw;
 }
 
+.home-intro-section {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon {
+    color: white;
+    font-size: 3rem;
+    margin: 0.3em;
+}
+
 #info-section-container {
     position: absolute;
     bottom: 50px;
@@ -79,3 +94,18 @@ p {
     display: none;
 }
 
+.aid-status {
+    display: none;
+    width: 83%;
+    padding: 0.8rem 0;
+    position: absolute;
+    bottom: 75px;
+    right: 0px;
+    background-color: rgba(0,0,0, 0.9);
+    line-height: 1.5rem;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    font-weight: 300;
+    font-size: 0.9rem;
+    z-index: 99
+}

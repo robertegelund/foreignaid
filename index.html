@@ -7,10 +7,15 @@
     <title>Foreign Aid - Norway to Africa</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <div id="map"></div>
+    <div class="home-intro-section">
+        <i class="fas fa-home icon icon-home"></i>
+        <i class="fas fa-info icon icon-info"></i>
+    </div>
     <div id="info-section-container">
         <h1 class="info-section-title">Africa</h1>
         <div class="info-section">
@@ -22,7 +27,9 @@
                 <p class="aid-percentages"></p>
                 <p class="aid-explanation"></p>
             </div>
+            <div class="aid-status"></div>
         </div>
+        
         <div id="aid-graph-timeseries" style="height: 180px; padding-right: 25px"></div>
         <div id="aid-graph-unspecified" style="height: 180px; padding-right: 25px"></div>
     </div>
