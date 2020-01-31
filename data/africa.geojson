@@ -504,7 +504,7 @@
 	}, {
 		"type": "Feature",
 		"properties": {
-			"name": "Côte d'Ivoire",
+			"name": "Ivory Coast",
 			"aid": 397.0,
 			"unspecified": 0
 		},
@@ -2433,7 +2433,7 @@
 	}, {
 		"type": "Feature",
 		"properties": {
-			"name": "Swaziland",
+			"name": "Eswatini",
 			"aid": "NaN",
 			"unspecified": "NaN"
 		},

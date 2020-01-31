@@ -99,6 +99,7 @@ const collectAndUseData = async () => {
         const aidString = String(country.properties.aid);
         const aidStringArray = [];
         kart.setZoom(4);
+
         if (aidString.length === 6) {
                 for (let i=1; i <= aidString.length; i++) { 
                     aidStringArray.push(aidString[i]);
@@ -136,11 +137,14 @@ const collectAndUseData = async () => {
 
         if(country.properties.unspecified === 0) {
             aidStatus.style.display = "block";
-            aidStatus.innerHTML = `All ${country.properties.name}'s Norwegian aid are allocated`;
+            aidStatus.innerHTML = `All of ${country.properties.name}'s aid from Norway are allocated`;
         } else if (country.properties.unspecified === "NaN") {
             aidStatus.style.display = "block";
-            aidStatus.innerHTML = `We are not sure whether any of ${country.properties.name}'s Norwegian aid is unalloc./unspec.`;
+            aidStatus.innerHTML = `Whether any of ${country.properties.name}'s aid from Norway is unallocated/unspecified is unsure`;
         } else {aidStatus.style.display = "none"}
 
+        if (country.properties.aid === "NaN") {
+            aidStatus.innerHTML = `${country.properties.name} has not received any aid from Norway`;
+        } 
     });
 })};

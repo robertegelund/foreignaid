@@ -8,8 +8,10 @@ iconHome.onclick = () => {
         pitch: 40
     });
 
+    kart.setPaintProperty(aktiv, "fill-color", "transparent"); 
+
     infoSectionTitle.innerHTML = "Africa";
-    totalAidAmount.innerHTML = "142,624";
+    totalAidAmount.innerHTML = "142,624 MNOK";
     aidPercentages.innerHTML = (142624 * 100 / 600813.8).toFixed(2) + " %";
     aidExplanation.innerHTML = "of the world's total aid from Norway"
     aidGraphUnspecified.style.display = "none";
