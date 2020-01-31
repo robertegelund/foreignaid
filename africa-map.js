@@ -5,8 +5,9 @@ const aidExplanation = document.querySelector(".aid-explanation")
 const aidGraphTimeseries = document.querySelector("#aid-graph-timeseries");
 const aidGraphUnspecified = document.querySelector("#aid-graph-unspecified");
 const aidStatus = document.querySelector(".aid-status");
-let aktiv = "Namibia";
 
+let aktiv = "Namibia";
+let first = true;
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0ZWdlbHVuZCIsImEiOiJjazUzbHVlaHkwYTFoM2xwbmltNzgyazA0In0.Xc5srVX7uKCSLlVU1RdtCg';
 const kart = new mapboxgl.Map({
@@ -14,8 +15,8 @@ const kart = new mapboxgl.Map({
     style: "mapbox://styles/robertegelund/ck60zv5y7086a1io3ahy6d9f2",
     center: [41.657048, -6.813934],
     zoom: 3.55,
-    maxZoom: 3.8,
-    minZoom: 3.2,
+    maxZoom: 4,
+    minZoom: 3.55,
     pitch: 40,
     minPitch: 40,
     maxPitch: 40
@@ -57,7 +58,7 @@ const options = {
 }
 const chart = new Highcharts.Chart(options);
 
-let first = true;
+
 aidPercentages.innerHTML = (142624 * 100 / 600813.8).toFixed(2) + " %";
 aidExplanation.innerHTML = "of the world's total aid from Norway"
 
@@ -97,7 +98,7 @@ const collectAndUseData = async () => {
         
         const aidString = String(country.properties.aid);
         const aidStringArray = [];
-        kart.setZoom(3.8);
+        kart.setZoom(4);
         if (aidString.length === 6) {
                 for (let i=1; i <= aidString.length; i++) { 
                     aidStringArray.push(aidString[i]);
@@ -112,13 +113,13 @@ const collectAndUseData = async () => {
 
         aidPercentages.innerHTML = (country.properties.aid * 100 / 142624).toFixed(2) + " %";
         aidExplanation.innerHTML = "of Africa's total aid from Norway";
+        aidGraphTimeseries.style.display = "none";
+        aidGraphUnspecified.style.display = "block";
         
         if(first) {
             kart.flyTo({
                 center: [e.lngLat.lng, e.lngLat.lat]
             });
-            aidGraphTimeseries.style.display = "none";
-            aidGraphUnspecified.style.display = "block";
             first = false;
         } else {
             kart.easeTo({
