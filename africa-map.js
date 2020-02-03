@@ -123,7 +123,7 @@ const collectAndUseData = async () => {
 
         chart.series[0].update({
             data:   [{
-                        name: "Unallocated/Unspecified",
+                        name: "Unallocated",
                         y: country.properties.unspecified * 100 / country.properties.aid
                     }]
             }) 
