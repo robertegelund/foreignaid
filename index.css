@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: Helvetica, sans-serif;
     color: white;
+    font-weight: 300;
 }  
 
 p {
@@ -42,13 +43,13 @@ p {
 
 #icon-info {
     color: gold;
+    animation: pulsate 1.5s infinite;
 }
 
 .what-and-how-to {
     display: flex;
     flex-direction: column;
     width: 68%;
-    margin: auto;
     position: absolute;
     top: 100px;
     left: 200px;
@@ -82,9 +83,13 @@ p {
     font-size: 0.9rem;
 }
 
+.paragraph-details {
+    padding-bottom: 4em;
+}
+
 .choose-continent {
     align-self: flex-end;
-    padding: 2em;
+    padding: 0 2em 2em 2em;
 }
 
 .choose-continent-headline,
@@ -178,4 +183,13 @@ p {
     font-weight: 300;
     font-size: 0.9rem;
     z-index: 99
+}
+
+@keyframes pulsate {
+    50% {
+        transform: scale(1.1)
+    }
+    100% {
+        transform: scale(1.0)
+    } 
 }

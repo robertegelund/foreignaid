@@ -12,14 +12,7 @@ let first = true;
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0ZWdlbHVuZCIsImEiOiJjazUzbHVlaHkwYTFoM2xwbmltNzgyazA0In0.Xc5srVX7uKCSLlVU1RdtCg';
 const kart = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/robertegelund/ck60zv5y7086a1io3ahy6d9f2",
-    center: [41.657048, -6.813934],
-    zoom: 3.55,
-    maxZoom: 4,
-    minZoom: 3.55,
-    pitch: 40,
-    minPitch: 40,
-    maxPitch: 40
+    style: "mapbox://styles/robertegelund/ck66n56dx00r31in057j6r7qt"
 });
 
 kart.on("load", () => {
