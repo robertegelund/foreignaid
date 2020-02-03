@@ -81,7 +81,7 @@ const collectAndUseData = async () => {
 
     kart.on("mouseover", country.properties.name, () => {
         if(country.properties.name != aktiv) 
-            kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.5)");
+            kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.3)");
     });
 
     kart.on("mouseleave", country.properties.name, () => {

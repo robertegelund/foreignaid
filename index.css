@@ -15,7 +15,7 @@ p {
     width: 100vw;
 }
 
-.home-intro-section {
+.home-info-icons {
     position: absolute;
     top: 45px;
     left: 65px;
@@ -29,6 +29,10 @@ p {
 .icon {
     font-size: 2.5rem;
     margin: 0.3em;
+}
+
+.icon,
+.choose-continent-africa {
     cursor: pointer;
 }
 
@@ -40,13 +44,70 @@ p {
     color: gold;
 }
 
+.what-and-how-to {
+    display: flex;
+    flex-direction: column;
+    width: 68%;
+    margin: auto;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    background:rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.what-headline,
+.choose-continent-headline {
+    color: gold;
+}
+
+.what-headline {
+    padding: 1em 0 0 2.6em
+}
+
+.paragraph-welcome,
+.paragraph-explanation,
+.paragraph-details,
+.choose-continent-headline,
+.choose-continent-africa {
+    padding: 0.8em 6em;
+    line-height: 1.4rem;
+    letter-spacing: 0.05rem;
+}
+
+.paragraph-welcome,
+.paragraph-explanation,
+.paragraph-details {
+    font-size: 0.9rem;
+}
+
+.choose-continent {
+    align-self: flex-end;
+    padding: 2em;
+}
+
+.choose-continent-headline,
+.choose-continent-africa {
+    padding: 0.3em 2em;
+}
+
+.choose-continent-africa,
+.total-aid-amount {
+    color: greenyellow;
+}
+
+.choose-continent-africa:hover {
+    text-transform: uppercase;
+}
+
 #info-section-container {
     position: absolute;
     bottom: 50px;
-    right: 50px;
-    width: 35%;
+    right: 20px;
+    width: 25%;
     min-width: 650px;
-    display: flex;
+    display: none;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
@@ -80,7 +141,6 @@ p {
 
 .total-aid-amount {
     font-size: 1.5rem;
-    color: greenyellow;
     padding: 0;
 }
 
