@@ -43,7 +43,7 @@ const options = {
         }
     },
     xAxis: {
-        categories: ["Unalloc./Unspec."],
+        categories: ["Unallocated"],
         labels: {
             style: {color: "white"}
         }
@@ -133,7 +133,7 @@ const collectAndUseData = async () => {
             aidStatus.innerHTML = `All of ${country.properties.name}'s aid from Norway are allocated`;
         } else if (country.properties.unspecified === "NaN") {
             aidStatus.style.display = "block";
-            aidStatus.innerHTML = `Whether any of ${country.properties.name}'s aid from Norway is unallocated/unspecified is unsure`;
+            aidStatus.innerHTML = `Whether any of ${country.properties.name}'s aid from Norway is unallocated is unsure`;
         } else {aidStatus.style.display = "none"}
 
         if (country.properties.aid === "NaN") {

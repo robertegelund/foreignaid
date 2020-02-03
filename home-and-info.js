@@ -6,6 +6,8 @@ const chooseContinent = document.querySelector(".choose-continent");
 const chooseContinentAfrica = document.querySelector(".choose-continent-africa");
 const infoSectionContainer = document.querySelector("#info-section-container");
 
+let open = true;
+
 iconHome.onclick = () => {
     kart.flyTo({
         center: [17.525, 23.074],
@@ -21,15 +23,20 @@ iconHome.onclick = () => {
     infoSectionContainer.style.display = "none";
     whatAndHowTo.style.display = "flex";
     chooseContinent.style.display = "block";
+    aidStatus.style.display = "none";
+    aidGraphTimeseries.style = "block";
+    aidGraphUnspecified.style = "none";
+
+    iconInfo.style.color = "gold";
+    iconInfo.style.animation = "pulsate 1.5s infinite";
+    open = true;
 }
 
-let open = true;
 iconInfo.onclick = () => {
     if (open) {
         whatAndHowTo.style.display = "none";
         infoSectionContainer.style.display = "flex";
         iconInfo.style.color = "white";
-        iconInfo.style.animation = "none";
         iconInfo.style.animationPlayState = "paused";
     } else {whatAndHowTo.style.display = "block";
         infoSectionContainer.style.display = "none";

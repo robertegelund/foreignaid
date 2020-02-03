@@ -46,13 +46,17 @@ p {
     animation: pulsate 1.5s infinite;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 .what-and-how-to {
     display: flex;
     flex-direction: column;
-    width: 68%;
+    width: 55%;
     position: absolute;
-    top: 100px;
-    left: 200px;
+    top: 90px;
     background:rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     z-index: 999;
@@ -171,11 +175,11 @@ p {
 
 .aid-status {
     display: none;
-    width: 83%;
+    width: 81%;
     padding: 0.8rem 0;
     position: absolute;
     bottom: 75px;
-    right: 0px;
+    right: 35px;
     background-color: rgba(0,0,0, 0.9);
     line-height: 1.5rem;
     letter-spacing: 0.05rem;
@@ -188,6 +192,9 @@ p {
 @keyframes pulsate {
     50% {
         transform: scale(1.1)
+    }
+    75% {
+        transform: rotate(360deg)
     }
     100% {
         transform: scale(1.0)
