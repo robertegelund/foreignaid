@@ -11,7 +11,7 @@ let open = true;
 iconHome.onclick = () => {
     kart.flyTo({
         center: [17.525, 23.074],
-        zoom: 1.5
+        zoom: 2
     });
 
     kart.setPaintProperty(aktiv, "fill-color", "transparent");
