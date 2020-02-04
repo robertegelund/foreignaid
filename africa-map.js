@@ -125,7 +125,10 @@ const collectAndUseData = async () => {
         chart.series[0].update({
             data:   [{
                         name: "Unallocated",
+<<<<<<< HEAD
                         y: country.properties.unspecified
+=======
+>>>>>>> 7dd304bcf70767aeb25fff80abe35462952923e4
                     }]
             }) 
 
