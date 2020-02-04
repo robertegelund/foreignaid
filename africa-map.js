@@ -12,14 +12,7 @@ let first = true;
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0ZWdlbHVuZCIsImEiOiJjazUzbHVlaHkwYTFoM2xwbmltNzgyazA0In0.Xc5srVX7uKCSLlVU1RdtCg';
 const kart = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/robertegelund/ck60zv5y7086a1io3ahy6d9f2",
-    center: [41.657048, -6.813934],
-    zoom: 3.55,
-    maxZoom: 4,
-    minZoom: 3.55,
-    pitch: 40,
-    minPitch: 40,
-    maxPitch: 40
+    style: "mapbox://styles/robertegelund/ck66n56dx00r31in057j6r7qt"
 });
 
 kart.on("load", () => {
@@ -34,6 +27,7 @@ const options = {
     },
     title: false,
     series: [{
+        name: "Unallocated aid from Norway (MNOK)",
         color: "gold",
         borderColor: "transparent",
         data: []
@@ -43,14 +37,14 @@ const options = {
     },
     yAxis: {
         min: 0,
-        max: 1,
+        max: 85,
         title: "",
         labels: {
-            style: {color: "white"}, format: "{value}%"
+            style: {color: "white"}
         }
     },
     xAxis: {
-        categories: ["Unalloc./Unspec."],
+        categories: ["Unallocated"],
         labels: {
             style: {color: "white"}
         }
@@ -81,7 +75,7 @@ const collectAndUseData = async () => {
 
     kart.on("mouseover", country.properties.name, () => {
         if(country.properties.name != aktiv) 
-            kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.5)");
+            kart.setPaintProperty(country.properties.name, "fill-color", "rgba(0,0,0,0.3)");
     });
 
     kart.on("mouseleave", country.properties.name, () => {
@@ -130,8 +124,8 @@ const collectAndUseData = async () => {
 
         chart.series[0].update({
             data:   [{
-                        name: "Unallocated/Unspecified",
-                        y: country.properties.unspecified * 100 / country.properties.aid
+                        name: "Unallocated",
+                        y: country.properties.unspecified
                     }]
             }) 
 
@@ -140,7 +134,7 @@ const collectAndUseData = async () => {
             aidStatus.innerHTML = `All of ${country.properties.name}'s aid from Norway are allocated`;
         } else if (country.properties.unspecified === "NaN") {
             aidStatus.style.display = "block";
-            aidStatus.innerHTML = `Whether any of ${country.properties.name}'s aid from Norway is unallocated/unspecified is unsure`;
+            aidStatus.innerHTML = `Whether any of ${country.properties.name}'s aid from Norway is unallocated is unsure`;
         } else {aidStatus.style.display = "none"}
 
         if (country.properties.aid === "NaN") {
