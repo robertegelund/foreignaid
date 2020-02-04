@@ -9,6 +9,12 @@ body {
 p {
     margin-block-start: 0;
     margin-block-end: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+img {
+    width: 100%;
 }
 
 #map {
@@ -54,6 +60,7 @@ p {
 .what-and-how-to {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 55%;
     position: absolute;
     top: 120px;
@@ -62,33 +69,41 @@ p {
     z-index: 999;
 }
 
-.what-headline,
-.choose-continent-headline {
-    color: gold;
+.what-headline {
+    color: rgb(180, 178, 178);
+    padding: 1em 0 0 2.3em;
+    align-self: flex-start;
+    letter-spacing: 0.2rem;
+    font-size: 2.3rem;
 }
 
-.what-headline {
-    padding: 1em 0 0 2.6em
+.what-headline span {
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    margin-left: 8px;
+    font-weight: 400;
 }
 
 .paragraph-welcome,
-.paragraph-explanation,
-.paragraph-details,
 .choose-continent-headline,
 .choose-continent-africa {
-    padding: 0.8em 6em;
-    line-height: 1.4rem;
+    padding: 1em 6.5em;
     letter-spacing: 0.05rem;
 }
 
-.paragraph-welcome,
-.paragraph-explanation,
-.paragraph-details {
-    font-size: 0.9rem;
+.what-and-how-to-grid {
+    display: grid;
+    justify-content: center;
+    width: 80%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5em;
+    padding: 3em;
 }
 
-.paragraph-details {
-    padding-bottom: 4em;
+.what-and-how-to-explanation {
+    font-size: 0.9rem;
+    margin-top: 1em;
 }
 
 .choose-continent {
@@ -99,6 +114,10 @@ p {
 .choose-continent-headline,
 .choose-continent-africa {
     padding: 0.3em 2em;
+}
+
+.choose-continent-headline {
+    color: gold;
 }
 
 .choose-continent-africa,
