@@ -9,7 +9,7 @@ const aidStatus = document.querySelector(".aid-status");
 let aktiv = "Namibia";
 let first = true;
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0ZWdlbHVuZCIsImEiOiJjazUzbHVlaHkwYTFoM2xwbmltNzgyazA0In0.Xc5srVX7uKCSLlVU1RdtCg';
+mapboxgl.accessToken = 'YOUR_ACCESS_TOKEN';
 const kart = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/robertegelund/ck66n56dx00r31in057j6r7qt"
